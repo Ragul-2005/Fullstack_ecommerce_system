@@ -1,176 +1,168 @@
-# Live Chat E-Commerce Platform
+<div align="center">
+  <h1>📘 Live Chat E-Commerce Platform</h1>
+  <p>
+    <a href="https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge"><img src="https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge" alt="Status"></a>
+    <a href="https://img.shields.io/badge/Role-Customer%20%26%20Admin-blue?style=for-the-badge"><img src="https://img.shields.io/badge/Role-Customer%20%26%20Admin-blue?style=for-the-badge" alt="Role"></a>
+    <a href="https://img.shields.io/badge/Backend-Node.js-brightgreen?style=for-the-badge"><img src="https://img.shields.io/badge/Backend-Node.js-brightgreen?style=for-the-badge" alt="Backend"></a>
+    <a href="https://img.shields.io/badge/Database-MongoDB-lightgreen?style=for-the-badge"><img src="https://img.shields.io/badge/Database-MongoDB-lightgreen?style=for-the-badge" alt="Database"></a>
+  </p>
+</div>
 
-## 🎉 Welcome
-This project is a modern full-stack e-commerce website built to showcase a real online shopping experience for customers and administrators.
+## 📌 Overview
+This repository contains a full-stack e-commerce web application built with a customer storefront and admin dashboard.
 
-It includes a polished storefront, user authentication, shopping cart flow, order processing, and an admin dashboard for product and order management.
+The platform includes:
+- Customer shopping experience with product browsing, search, cart, and orders.
+- Admin experience with product management and order status control.
+- Backend API powered by Node.js and Express.
+- MongoDB database for users, products, orders, payments, and wishlist data.
 
 ---
 
-## 🌐 What the Website Does
-- Customers can browse products, search and filter, add items to the cart, checkout, and view past orders.
-- Admin users can add, edit, and delete products, manage order status, and monitor customer orders.
-- The application keeps product, order, user, and payment data in MongoDB.
-- The frontend is built with HTML, CSS, and vanilla JavaScript.
-- The backend uses Node.js with Express and exposes a REST API.
+## ✅ Completed Work
+### 🧪 Frontend Features
+- Homepage product browsing
+- Search and category filtering
+- Shopping cart with quantity control
+- Checkout flow with order creation
+- Customer order history page
+- Admin dashboard for products and orders
 
----
+## 🧱 Modules and Responsibilities
+This project is organized into frontend and backend modules so each responsibility stays clear.
 
-## 👀 Website Pages
-- `frontend/index.html` — Public storefront and landing page.
-- `frontend/home.html` — Main customer dashboard for browsing and shopping.
-- `frontend/customer.html` — Customer account view, cart, and order history.
-- `frontend/admin.html` — Admin panel for managing products and orders.
-- `frontend/landing.html` — Marketing-style landing page for the store.
+### Frontend modules
+- `frontend/js/app.js` — Manages product browsing, search, filters, and user interactions on the storefront.
+- `frontend/js/cart.js` — Handles cart state, quantity updates, total price calculation, and checkout preparation.
+- `frontend/js/admin.js` — Implements admin dashboard behavior for product and order management.
+
+### Backend modules
+- `backend/server.js` — Express server entrypoint, middleware setup, and route registration.
+- `backend/middleware/auth.js` — Auth middleware for verifying JWT tokens and granting protected access.
+- `backend/models/User.js` — User schema with registration, login, and profile fields.
+- `backend/models/Product.js` — Product schema for storing catalog items and inventory data.
+- `backend/models/Order.js` — Order schema for saving purchases, shipping details, and status.
+- `backend/models/Payment.js` — Payment schema to track payment method and transaction state.
+- `backend/models/Wishlist.js` — Wishlist schema for storing users’ saved items.
+- `backend/routes/users.js` — User routes for registration, login, profile, and admin user listing.
+- `backend/routes/products.js` — Product routes for catalog browsing and admin product CRUD.
+- `backend/routes/orders.js` — Order routes for checkout, order history, and admin order control.
+- `backend/routes/payments.js` — Payment routes for tracking and updating payment status.
+- `backend/routes/wishlist.js` — Wishlist routes for adding, removing, and viewing saved items.
+- `backend/routes/admin.js` — Admin-specific controls and aggregated management endpoints.
+
+### Why modules matter
+- Keeps frontend and backend responsibilities separated
+- Makes maintenance easier by grouping related functionality
+- Supports future expansion such as new payment gateways, product categories, or analytics
+
+### 🧩 Backend Features
+- User registration and JWT login
+- Secure profile and order endpoints
+- CRUD operations for products
+- Order creation and management
+- Admin-only access control
+- Wishlist support and payment tracking
+
+### 🛠️ Toolchain
+- Node.js
+- Express.js
+- MongoDB
+- HTML, CSS, JavaScript
 
 ---
 
 ## 🚀 Full Workflow
-### 1. Customer visits the storefront
-- User opens the website and lands on the homepage.
-- Products are displayed with images, names, prices, and quick action controls.
-
-### 2. User registration and login
-- New users register using email and password.
-- Returning users log in and receive a JWT token for secure access.
-
-### 3. Browse products
-- Customers can explore the product catalog.
-- Search and filter controls help find the right items quickly.
-
-### 4. Add to cart
-- Products are added to the shopping cart.
-- Cart totals and item quantities update immediately.
-
-### 5. Checkout process
-- Customer completes checkout with shipping details and payment info.
-- Order details are captured and stored in MongoDB.
-
-### 6. Order confirmation and tracking
-- After placing an order, users can view their orders in `My Orders`.
-- Order status updates are visible to customers.
-
-### 7. Admin operations
-- Admins log in to the admin dashboard.
-- Admins create, edit, and delete products.
-- Admins update order status and manage order fulfillment.
+1. **Open the storefront**
+   - The user lands on the homepage and sees available products.
+2. **Register / Login**
+   - Customers register or log in with email/password.
+3. **Browse and search**
+   - Products are filtered by category and searched by keyword.
+4. **Add items to cart**
+   - Selected products are added to cart with quantity updates.
+5. **Checkout**
+   - User submits shipping/payment details and places an order.
+6. **Order tracking**
+   - User views order history and payment status.
+7. **Admin control**
+   - Admin logs in, manages products, and updates order status.
 
 ---
 
-## 🧠 Why This App Matters
-This project demonstrates how to build a complete e-commerce workflow from end to end:
-- Storefront browsing
-- Secure login and authorization
-- Cart and checkout management
-- Order processing and admin control
-- API-driven backend with MongoDB persistence
-
----
-
-## 🧩 Architecture Overview
-### Frontend
-- Built with HTML, CSS, and JavaScript
-- Uses browser storage and API calls to maintain session state
-- Includes separate views for customers and admins
-
-### Backend
-- Node.js + Express
-- Authentication with JWT
-- REST API routes for users, products, orders, payments, and wishlist
-- Middleware for auth protection and admin access control
-
-### Database
-- MongoDB stores:
-  - users
-  - products
-  - orders
-  - payments
-  - wishlists
-
----
-
-## ✅ Key Features
-- Customer registration and secure login
-- Product catalog browsing
-- Cart management and quantity updates
-- Order checkout and history
-- Admin product management
-- Admin order status updates
-- Wishlist support
-- API-based backend
-- Local storage integration for cart/auth state
+## 📄 Website Pages
+- `frontend/index.html` — Public landing/storefront page
+- `frontend/home.html` — Customer shopping dashboard
+- `frontend/customer.html` — Customer account/orders page
+- `frontend/admin.html` — Admin product/order management panel
+- `frontend/landing.html` — Marketing landing page
 
 ---
 
 ## ⚙️ Setup Instructions
 ### Prerequisites
-- Node.js (v14+)
-- MongoDB (local or Atlas)
-- A browser to open HTML files
+- Node.js v14+
+- MongoDB local or Atlas
+- Browser for frontend
 
-### Backend setup
-1. Open a terminal in the project root.
-2. Install dependencies:
-   ```bash
-   cd backend
-   npm install
-   ```
-3. Create or update `backend/.env` with:
-   ```env
-   PORT=5000
-   MONGODB_URI=mongodb://localhost:27017/online-purchase-system
-   JWT_SECRET=your_jwt_secret_key
-   NODE_ENV=development
-   ```
-4. Start MongoDB if using a local server:
-   ```bash
-   mongod
-   ```
-5. Start the backend server:
-   ```bash
-   npm start
-   ```
-6. API is available at `http://localhost:5000`
+### Backend Setup
+```bash
+cd backend
+npm install
+```
+Create `backend/.env` with:
+```env
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/online-purchase-system
+JWT_SECRET=your_jwt_secret_key
+NODE_ENV=development
+```
+Start MongoDB (local):
+```bash
+mongod
+```
+Start backend:
+```bash
+npm start
+```
 
-### Frontend setup
-1. Open the frontend directly in a browser by launching `frontend/index.html`, or run a quick static server:
-   ```bash
-   cd frontend
-   python -m http.server 8000
-   ```
-2. Visit `http://localhost:8000`
+### Frontend Setup
+Open `frontend/index.html` directly in a browser, or run a local server:
+```bash
+cd frontend
+python -m http.server 8000
+```
+Then open `http://localhost:8000`
 
 ---
 
-## 🔌 API Overview
-### User routes
+## 🧱 API Summary
+### User Routes
 - `POST /api/users/register` — Register a new user
-- `POST /api/users/login` — Authenticate and receive a token
-- `GET /api/users/profile` — Get user profile (requires auth)
-- `PUT /api/users/profile` — Update profile (requires auth)
-- `GET /api/users` — Get all users (admin only)
+- `POST /api/users/login` — Login and receive token
+- `GET /api/users/profile` — Get authenticated profile
+- `PUT /api/users/profile` — Update profile
+- `GET /api/users` — List users (admin only)
 
-### Product routes
-- `GET /api/products` — List products
-- `GET /api/products/:id` — Product details
+### Product Routes
+- `GET /api/products` — List all products
+- `GET /api/products/:id` — Get product details
 - `GET /api/products/category/:category` — Filter by category
 - `POST /api/products` — Create product (admin only)
 - `PUT /api/products/:id` — Update product (admin only)
 - `DELETE /api/products/:id` — Delete product (admin only)
 
-### Order routes
-- `POST /api/orders` — Create a new order
-- `GET /api/orders/my-orders` — Get current user orders
-- `GET /api/orders` — Get all orders (admin only)
+### Order Routes
+- `POST /api/orders` — Create order
+- `GET /api/orders/my-orders` — Get user orders
+- `GET /api/orders` — List all orders (admin only)
 - `GET /api/orders/:id` — Get order by ID
 - `PUT /api/orders/:id/status` — Update order status (admin only)
-- `PUT /api/orders/:id/cancel` — Cancel an order
+- `PUT /api/orders/:id/cancel` — Cancel order
 
 ---
 
 ## 🧪 Demo Accounts
-Use these credentials to test the app quickly:
-
 ### Customer
 - Email: `user@test.com`
 - Password: `password123`
@@ -181,43 +173,27 @@ Use these credentials to test the app quickly:
 
 ---
 
-## 💡 Notes
-- Admin access must be enabled in the database if needed.
-- Use the admin panel to seed products or manage store inventory.
-- If the frontend does not connect, verify backend is running and CORS is enabled.
+## 📚 Resources
+- `backend/server.js` — Express server and route setup
+- `backend/models/` — Mongoose data models
+- `backend/routes/` — API route definitions
+- `frontend/js/` — Client-side logic for shop and admin
+- `frontend/css/` — Styles for pages
 
 ---
 
-## 📌 Project Structure
-- `backend/` — API server, models, routes, auth middleware
-- `frontend/` — UI pages, styles, and JavaScript logic
-- `seed-products.js` — Seed product data script
-- `MONGODB_SETUP.md` — MongoDB setup info
-- `SETUP_INSTRUCTIONS.md` — Installation guide
+## 🌟 Project Status
+All core features are implemented and the platform is ready for full local testing.
+- Customer shopping and checkout flow ✅
+- Admin product and order management ✅
+- Secure authentication and protected routes ✅
+- MongoDB persistence ✅
 
 ---
 
-## 🎯 Final Summary
-This platform delivers a complete buyer and seller workflow with easy setup, clean UI pages, secure auth, and an admin dashboard. It is a ready-to-run proof of concept for a real e-commerce website.
-
-
-## 👨‍💼 Admin Panel
-
-1. Login as admin
-2. Click **Admin Panel** in navigation
-3. **Manage Products**: Add, edit, delete products
-4. **Manage Orders**: View and update order statuses
-
-## 📚 Learning Outcomes
-
-This project demonstrates:
-- Full-stack development
-- Frontend-Backend integration
-- REST API design
-- Database modeling
-- Authentication & Authorization
-- CRUD operations
-- Component-based UI
+<div align="center">
+  <strong>Ready for review, testing, and further enhancement.</strong>
+</div>
 
 ## 📄 License
 
