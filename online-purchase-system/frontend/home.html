@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Purchase System - Home</title>
+    <link rel="stylesheet" href="css/landing-style.css">
+</head>
+<body>
+    <div class="landing-container">
+        <div class="landing-content">
+            <!-- Header -->
+            <div class="landing-header">
+                <h1 class="main-title">🛍️ Welcome to Online Purchase System</h1>
+                <p class="main-subtitle">Choose your role to get started</p>
+            </div>
+
+            <!-- Choice Cards -->
+            <div class="choice-cards">
+                <!-- Customer Card -->
+                <div class="choice-card customer-card">
+                    <div class="card-icon">👥</div>
+                    <h2>I'm a Customer</h2>
+                    <p class="card-description">Browse products, add to cart, and place orders with easy payment processing</p>
+                    <ul class="card-features">
+                        <li>✓ Browse 80+ products</li>
+                        <li>✓ Multiple categories</li>
+                        <li>✓ Easy checkout</li>
+                        <li>✓ Track orders</li>
+                        <li>✓ Fake payment option</li>
+                    </ul>
+                    <button class="choice-btn customer-btn" onclick="goToCustomer()">
+                        Enter as Customer
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Features Section -->
+            <div class="features-section">
+                <h3>Other Features</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">🔒</span>
+                        <span class="feature-text">Secure Authentication</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">💳</span>
+                        <span class="feature-text">Multiple Payment Methods</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📦</span>
+                        <span class="feature-text">Order Tracking</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">👨‍💼</span>
+                        <span class="feature-text">Admin Panel</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="landing-footer">
+                <p>&copy; 2026 Online Purchase System. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goToCustomer() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

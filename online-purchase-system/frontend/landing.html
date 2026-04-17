@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Purchase System - Welcome</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+        }
+
+        .landing-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            margin: auto;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .landing-container h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .landing-container p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .portal-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .portal-card {
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--card-bg, white);
+            color: var(--text-color, #333);
+        }
+
+        .portal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color, #667eea);
+        }
+
+        .portal-card.customer {
+            border: 2px solid #667eea;
+        }
+
+        .portal-card.admin {
+            border: 2px solid #764ba2;
+        }
+
+        .portal-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .portal-card h2 {
+            font-size: 1.5rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .portal-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            color: #999;
+        }
+
+        .portal-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .portal-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .landing-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        body.dark-mode .landing-container {
+            background: rgba(30, 30, 30, 0.95);
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .landing-container h1 {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .landing-container p {
+            color: #aaa;
+        }
+
+        body.dark-mode .portal-card p {
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            .landing-container {
+                padding: 2rem;
+            }
+
+            .landing-container h1 {
+                font-size: 2rem;
+            }
+
+            .portal-options {
+                grid-template-columns: 1fr;
+            }
+
+            .portal-icon {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+
+    <div class="landing-container">
+        <h1>🛍️ Welcome to Online Store</h1>
+        <p>Choose your portal to get started</p>
+
+        <div class="portal-options">
+            <!-- Customer Portal -->
+            <div class="portal-card customer">
+                <div class="portal-icon">👤</div>
+                <h2>Customer Portal</h2>
+                <p>Browse products, shop, and track your orders</p>
+                <a href="index.html" class="portal-btn">Enter as Customer</a>
+            </div>
+
+            <!-- Admin Portal -->
+            <div class="portal-card admin">
+                <div class="portal-icon">👨‍💼</div>
+                <h2>Admin Portal</h2>
+                <p>Manage products, orders, and users</p>
+                <a href="admin.html" class="portal-btn">Enter as Admin</a>
+            </div>
+        </div>
+
+        <div class="landing-footer">
+            <p>© 2026 Online Purchase System. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const btn = event.target;
+            btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+
+        // Load dark mode on page load
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.dark-mode-toggle').textContent = '☀️';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Purchase System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🛒 Online Store</div>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link" onclick="showProducts()">Products</a></li>
+                <li><a href="#" class="nav-link" onclick="showCart()">Cart <span class="cart-count" id="cartCount">0</span></a></li>
+                <li><a href="#" class="nav-link" onclick="showWishlist()">Wishlist</a></li>
+                <li><a href="#" class="nav-link" onclick="showOrders()">My Orders</a></li>
+                <li><a href="#" class="nav-link" onclick="showProfile()">Profile</a></li>
+                <li><button onclick="toggleDarkMode()" class="dark-mode-btn">🌙</button></li>
+                <li><a href="#" class="nav-link" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Auth Container -->
+    <div id="authContainer" class="auth-container">
+        <div class="auth-box">
+            <h1>Welcome to Online Store</h1>
+            <div class="auth-tabs">
+                <button class="auth-tab-btn active" onclick="switchToLogin()">Login</button>
+                <button class="auth-tab-btn" onclick="switchToRegister()">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-form active">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button onclick="login()">Login</button>
+                <a href="landing.html" class="back-link">← Back to Home</a>
+                <p class="auth-message" id="loginMessage"></p>
+            </div>
+
+            <!-- Register Form -->
+            <div id="registerForm" class="auth-form">
+                <input type="text" id="regName" placeholder="Full Name" required>
+                <input type="email" id="regEmail" placeholder="Email" required>
+                <input type="password" id="regPassword" placeholder="Password" required>
+                <input type="tel" id="regPhone" placeholder="Phone Number" required>
+                <input type="text" id="regAddress" placeholder="Address" required>
+                <input type="text" id="regCity" placeholder="City" required>
+                <input type="text" id="regZipCode" placeholder="Zip Code" required>
+                <button onclick="register()">Register</button>                <a href="landing.html" class="back-link">← Back to Home</a>                <p class="auth-message" id="regMessage"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="mainContainer" class="main-container" style="display:none;">
+        
+        <!-- Products Section -->
+        <section id="productsSection" class="section active">
+            <div class="section-header">
+                <h2>Products</h2>
+                <div class="filter-container">
+                    <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+                    <select id="categoryFilter" onchange="filterByCategory()">
+                        <option value="">All Categories</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Books">Books</option>
+                        <option value="Home">Home</option>
+                    </select>
+                    <select id="shopFilter" onchange="filterByShop()">
+                        <option value="">All Shops</option>
+                        <!-- Shop options will be populated dynamically -->
+                    </select>
+                    <div class="price-filter">
+                        <input type="number" id="minPrice" placeholder="Min Price" onchange="filterByPrice()">
+                        <input type="number" id="maxPrice" placeholder="Max Price" onchange="filterByPrice()">
+                    </div>
+                </div>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cartSection" class="section">
+            <h2>Shopping Cart</h2>
+            <div class="cart-container">
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be loaded here -->
+                </div>
+                <div class="cart-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping:</span>
+                        <span id="shipping">$10.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="total">$10.00</span>
+                    </div>
+                    <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wishlist Section -->
+        <section id="wishlistSection" class="section">
+            <h2>My Wishlist</h2>
+            <div class="wishlist-container" id="wishlistContainer">
+                <!-- Wishlist items will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Checkout Section -->
+        <section id="checkoutSection" class="section">
+            <h2>Checkout</h2>
+            <div class="checkout-container">
+                <div class="checkout-form">
+                    <h3>Shipping Address</h3>
+                    <input type="text" id="checkoutStreet" placeholder="Street Address" required>
+                    <input type="text" id="checkoutCity" placeholder="City" required>
+                    <input type="text" id="checkoutZip" placeholder="Zip Code" required>
+                    <input type="text" id="checkoutCountry" placeholder="Country" required>
+                    
+                    <h3>Payment Method</h3>
+                    <select id="paymentMethod" onchange="updatePaymentForm()">
+                        <option value="credit-card">Credit Card</option>
+                        <option value="debit-card">Debit Card</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+
+                    <!-- Card Payment Form -->
+                    <div id="cardPaymentForm" class="payment-form">
+                        <h4>Card Details</h4>
+                        <p style="color: #666; font-size: 13px; margin-bottom: 0.8rem;">Use any 16-digit number for testing</p>
+                        <input type="text" id="cardNumber" placeholder="Card Number (16 digits)" maxlength="16" required>
+                        <div class="card-row">
+                            <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" style="width: 48%;" required>
+                            <input type="text" id="cvv" placeholder="CVV" maxlength="4" style="width: 48%;" required>
+                        </div>
+                    </div>
+
+                    <!-- PayPal Form -->
+                    <div id="paypalPaymentForm" class="payment-form" style="display: none;">
+                        <h4>PayPal Account</h4>
+                        <p style="color: #666; font-size: 14px;">You will be redirected to PayPal to complete the payment.</p>
+                    </div>
+
+                    <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
+                </div>
+                <div class="checkout-summary">
+                    <h3>Order Review</h3>
+                    <div id="checkoutItems"></div>
+                    <div class="summary-row total">
+                        <span>Total Amount:</span>
+                        <span id="checkoutTotal">$0.00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="ordersSection" class="section">
+            <h2>My Orders</h2>
+            <div class="orders-container" id="ordersContainer">
+                <!-- Orders will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profileSection" class="section">
+            <h2>My Profile</h2>
+            <div class="profile-container">
+                <div class="profile-form">
+                    <label>Name</label>
+                    <input type="text" id="profileName">
+                    
+                    <label>Email</label>
+                    <input type="email" id="profileEmail" disabled>
+                    
+                    <label>Phone</label>
+                    <input type="tel" id="profilePhone">
+                    
+                    <label>Address</label>
+                    <input type="text" id="profileAddress">
+                    
+                    <label>City</label>
+                    <input type="text" id="profileCity">
+                    
+                    <label>Zip Code</label>
+                    <input type="text" id="profileZipCode">
+                    
+                    <button onclick="updateProfile()">Update Profile</button>
+                    <p id="profileMessage"></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>
